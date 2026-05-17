@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiago Bianconi Fotografia | Casamentos & Eventos</title>
+  <meta name="description" content="Fotografia de casamentos e eventos em Campinas e São Paulo. Imagens que contam a sua história com elegância e emoção." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       CSS VARIABLES & RESET
+    ============================================ */
+    :root {
+      --gold:        #C9A96E;
+      --gold-light:  #E2C99A;
+      --gold-dim:    #8A6D3E;
+      --cream:       #F5EDD6;
+      --bg:          #0D0C0A;
+      --bg-mid:      #131210;
+      --bg-card:     #1A1815;
+      --text:        #E8DFD0;
+      --text-muted:  #8A8070;
+      --white:       #FFFFFF;
+      --font-serif:  'Cormorant Garamond', serif;
+      --font-sans:   'Jost', sans-serif;
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-out:    cubic-bezier(0.0, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================
+       NOISE TEXTURE OVERLAY (toda a página)
+    ============================================ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ============================================
+       SCROLLBAR
+    ============================================ */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+    /* ============================================
+       TYPOGRAPHY HELPERS
+    ============================================ */
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-label::before {
+      content: '—';
+      margin-right: 0.6rem;
+      opacity: 0.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    .gold-line {
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 1.6rem 0;
+    }
+
+    /* ============================================
+       NAVIGATION
+    ============================================ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.5s var(--ease-smooth), padding 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(13, 12, 10, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 1rem 3rem;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: 0.65rem !important;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold) !important;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      padding: 0.5rem 1.2rem;
+      border-radius: 1px;
+      transition: background 0.3s, color 0.3s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--bg) !important;
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ============================================
+       HERO
+    ============================================ */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      /* 🔄 TROQUE pela foto principal do casal — idealmente paisagem, iluminação natural */
+      background: linear-gradient(135deg, #1a1610 0%, #0d0c0a 40%, #1c1507 100%);
+      background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1800&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.05);
+      transition: transform 8s var(--ease-smooth);
+    }
+
+    #hero.loaded .hero-bg { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(13, 12, 10, 0.95) 0%,
+        rgba(13, 12, 10, 0.4) 50%,
+        rgba(13, 12, 10, 0.15) 100%
+      );
+    }
+
+    .hero-overlay-side {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(13, 12, 10, 0.7) 0%,
+        transparent 60%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 6vw 8vh;
+      max-width: 780px;
+    }
+
+    .hero-tag {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s 0.3s var(--ease-out) forwards;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1.2s 0.5s var(--ease-out) forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: rgba(232, 223, 208, 0.65);
+      max-width: 480px;
+      margin-bottom: 3rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s 0.8s var(--ease-out) forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s 1s var(--ease-out) forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--gold);
+      color: var(--bg);
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: transparent;
+      color: var(--cream);
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      border: 1px solid rgba(232, 223, 208, 0.3);
+      cursor: pointer;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 6vw;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      animation: fadeUp 1s 1.4s var(--ease-out) forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 0.58rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      writing-mode: vertical-rl;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    /* ============================================
+       NÚMEROS / CREDENCIAIS
+    ============================================ */
+    #numbers {
+      background: var(--bg-mid);
+      border-top: 1px solid rgba(201, 169, 110, 0.12);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.12);
+      padding: 3.5rem 6vw;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .number-item {
+      text-align: center;
+      padding: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+
+    .number-item.visible { opacity: 1; transform: translateY(0); }
+
+    .number-value {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .number-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ============================================
+       SOBRE
+    ============================================ */
+    #sobre {
+      padding: 10rem 6vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8vw;
+      align-items: center;
+    }
+
+    .sobre-img-wrap {
+      position: relative;
+      aspect-ratio: 3/4;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+
+    .sobre-img-wrap.visible { opacity: 1; transform: translateX(0); }
+
+    .sobre-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* 🔄 TROQUE pela foto do Thiago — retrato profissional */
+    }
+
+    .sobre-img-frame {
+      position: absolute;
+      top: -18px;
+      left: -18px;
+      right: 18px;
+      bottom: 18px;
+      border: 1px solid rgba(201, 169, 110, 0.25);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .sobre-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--bg-card);
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      padding: 1.2rem 1.6rem;
+      text-align: center;
+    }
+
+    .sobre-badge-num {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .sobre-badge-text {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    .sobre-text {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.9s 0.2s var(--ease-out), transform 0.9s 0.2s var(--ease-out);
+    }
+
+    .sobre-text.visible { opacity: 1; transform: translateX(0); }
+
+    .sobre-text h2 {
+      font-size: clamp(2.5rem, 4.5vw, 4rem);
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .sobre-text h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .sobre-text p {
+      color: rgba(232, 223, 208, 0.65);
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .sobre-assinatura {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-top: 2rem;
+    }
+
+    /* ============================================
+       PORTFÓLIO
+    ============================================ */
+    #portfolio {
+      padding: 6rem 6vw;
+      background: var(--bg-mid);
+    }
+
+    .portfolio-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .portfolio-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color: var(--cream);
+    }
+
+    .portfolio-header h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .portfolio-filter {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .filter-btn {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201, 169, 110, 0.05);
+    }
+
+    /* Masonry-like grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 100px;
+      gap: 6px;
+    }
+
+    .portfolio-item {
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+
+    .portfolio-item.visible { opacity: 1; transform: scale(1); }
+
+    .portfolio-item:nth-child(1)  { grid-column: span 5; grid-row: span 4; }
+    .portfolio-item:nth-child(2)  { grid-column: span 4; grid-row: span 3; }
+    .portfolio-item:nth-child(3)  { grid-column: span 3; grid-row: span 2; }
+    .portfolio-item:nth-child(4)  { grid-column: span 3; grid-row: span 3; }
+    .portfolio-item:nth-child(5)  { grid-column: span 4; grid-row: span 3; }
+    .portfolio-item:nth-child(6)  { grid-column: span 5; grid-row: span 3; }
+    .portfolio-item:nth-child(7)  { grid-column: span 3; grid-row: span 2; }
+    .portfolio-item:nth-child(8)  { grid-column: span 4; grid-row: span 3; }
+    .portfolio-item:nth-child(9)  { grid-column: span 5; grid-row: span 3; }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-smooth), filter 0.8s;
+      filter: brightness(0.9) saturate(0.85);
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1) saturate(1);
+    }
+
+    .portfolio-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,12,10,0.8) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+    }
+
+    .portfolio-item:hover .portfolio-item-overlay { opacity: 1; }
+
+    .portfolio-item-overlay span {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    /* ============================================
+       SERVIÇOS
+    ============================================ */
+    #servicos {
+      padding: 10rem 6vw;
+    }
+
+    .servicos-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .servicos-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color: var(--cream);
+    }
+
+    .servicos-header h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .servico-card {
+      background: var(--bg-card);
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(201, 169, 110, 0.08);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+
+    .servico-card.visible { opacity: 1; transform: translateY(0); }
+
+    .servico-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,169,110,0.05) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .servico-card:hover::before { opacity: 1; }
+
+    .servico-card:hover {
+      border-color: rgba(201, 169, 110, 0.25);
+    }
+
+    .servico-num {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(201, 169, 110, 0.12);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      transition: color 0.4s;
+    }
+
+    .servico-card:hover .servico-num {
+      color: rgba(201, 169, 110, 0.25);
+    }
+
+    .servico-icon {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .servico-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--cream);
+      margin-bottom: 0.8rem;
+    }
+
+    .servico-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .servico-detalhe {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .servico-detalhe::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .servico-card:hover .servico-detalhe::after { width: 48px; }
+
+    /* ============================================
+       COMO FUNCIONA
+    ============================================ */
+    #como-funciona {
+      background: var(--bg-mid);
+      padding: 8rem 6vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #como-funciona::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,169,110,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .como-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .como-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color: var(--cream);
+    }
+
+    .como-header h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .como-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .como-steps::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    }
+
+    .como-step {
+      padding: 0 2rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+
+    .como-step.visible { opacity: 1; transform: translateY(0); }
+
+    .step-circle {
+      width: 64px;
+      height: 64px;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      position: relative;
+      background: var(--bg-mid);
+    }
+
+    .step-circle::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 169, 110, 0.1);
+    }
+
+    .step-num {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    .como-step h4 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--cream);
+      margin-bottom: 0.8rem;
+    }
+
+    .como-step p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* ============================================
+       DEPOIMENTOS
+    ============================================ */
+    #depoimentos {
+      padding: 8rem 6vw;
+    }
+
+    .depoimentos-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .depoimentos-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color: var(--cream);
+    }
+
+    .depoimentos-header h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .depoimentos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .depoimento-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(201, 169, 110, 0.08);
+      padding: 2.5rem;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+
+    .depoimento-card.visible { opacity: 1; transform: translateY(0); }
+
+    .depoimento-quote {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      color: rgba(201, 169, 110, 0.15);
+      line-height: 1;
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+    }
+
+    .depoimento-stars {
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .depoimento-text {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(232, 223, 208, 0.8);
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+
+    .depoimento-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      flex-shrink: 0;
+      /* 🔄 A foto do avatar vem do src do img dentro */
+    }
+
+    .author-avatar img { height: 100%; object-fit: cover; }
+
+    .author-name {
+      font-size: 0.82rem;
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    .author-event {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    /* ============================================
+       FEATURED — foto grande com citação
+    ============================================ */
+    #featured {
+      position: relative;
+      height: 70vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .featured-bg {
+      position: absolute;
+      inset: 0;
+      /* 🔄 TROQUE por uma foto horizontal impactante do portfólio */
+      background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1800&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.4) saturate(0.7);
+      transform: scale(1.02);
+      transition: transform 0.1s;
+    }
+
+    .featured-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 8vw;
+      max-width: 700px;
+    }
+
+    .featured-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-quote::before {
+      content: '"';
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.5;
+      line-height: 0;
+      vertical-align: -0.4em;
+      margin-right: 0.2em;
+    }
+
+    .featured-author {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ============================================
+       CTA FINAL
+    ============================================ */
+    #cta {
+      padding: 10rem 6vw;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    #cta h2 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      color: var(--cream);
+      margin-bottom: 1.2rem;
+    }
+
+    #cta h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    #cta p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .cta-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: #25D366;
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1.2rem 3rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      border-radius: 2px;
+    }
+
+    .cta-whatsapp:hover {
+      background: #1dbc5a;
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(37, 211, 102, 0.2);
+    }
+
+    .cta-whatsapp svg { flex-shrink: 0; }
+
+    .cta-note {
+      margin-top: 1.5rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ============================================
+       WHATSAPP FLUTUANTE
+    ============================================ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      animation: fadeIn 1s 2s forwards;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* Tooltip */
+    .whatsapp-float::before {
+      content: 'Solicitar orçamento';
+      position: absolute;
+      right: calc(100% + 12px);
+      background: var(--bg-card);
+      color: var(--cream);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      padding: 0.5rem 0.9rem;
+      border: 1px solid rgba(201,169,110,0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .whatsapp-float:hover::before { opacity: 1; }
+
+    /* ============================================
+       RODAPÉ
+    ============================================ */
+    footer {
+      background: #080807;
+      border-top: 1px solid rgba(201, 169, 110, 0.12);
+      padding: 5rem 6vw 3rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-brand h3 span {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .footer-brand .tagline {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 320px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      transition: border-color 0.3s, color 0.3s;
+      cursor: pointer;
+    }
+
+    .social-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom a {
+      color: var(--gold);
+    }
+
+    /* ============================================
+       MOBILE MENU
+    ============================================ */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 12, 10, 0.98);
+      z-index: 998;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--cream);
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+
+    .mobile-menu a:hover { color: var(--gold); }
+
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2rem;
+      color: var(--gold);
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    /* ============================================
+       LIGHTBOX
+    ============================================ */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: var(--gold);
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    /* ============================================
+       KEYFRAMES
+    ============================================ */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes scrollPulse {
+      0%   { opacity: 1; transform: scaleY(1); transform-origin: top; }
+      50%  { opacity: 0.4; }
+      100% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 1024px) {
+      #sobre { grid-template-columns: 1fr; gap: 4rem; }
+      .sobre-img-wrap { max-width: 500px; margin: 0 auto; }
+      .servicos-grid { grid-template-columns: 1fr 1fr; }
+      .como-steps { grid-template-columns: 1fr 1fr; }
+      .como-steps::before { display: none; }
+      .depoimentos-grid { grid-template-columns: 1fr 1fr; }
+      #numbers { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      nav.scrolled { padding: 0.8rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero-content { padding: 0 1.5rem 6vh; }
+      .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 140px;
+      }
+      .portfolio-item { grid-column: span 1 !important; grid-row: span 2 !important; }
+      .servicos-grid { grid-template-columns: 1fr; }
+      .como-steps { grid-template-columns: 1fr; }
+      .depoimentos-grid { grid-template-columns: 1fr; }
+      #numbers { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; padding: 2rem 1.5rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .portfolio-filter { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+  ============================================ -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Thiago <span>Bianconi</span></a>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="https://wa.me/5545999889353?text=Olá%20Thiago!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" class="nav-cta">Solicitar orçamento</a>
+    </div>
+    <div class="nav-hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">×</button>
+    <a href="#sobre"       onclick="closeMobileMenu()">Sobre</a>
+    <a href="#portfolio"   onclick="closeMobileMenu()">Portfólio</a>
+    <a href="#servicos"    onclick="closeMobileMenu()">Serviços</a>
+    <a href="#como-funciona" onclick="closeMobileMenu()">Como funciona</a>
+    <a href="#depoimentos" onclick="closeMobileMenu()">Depoimentos</a>
+    <a href="https://wa.me/5545999889353?text=Olá%20Thiago!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" onclick="closeMobileMenu()" style="color:var(--gold)">Solicitar orçamento</a>
+  </div>
+
+  <!-- ============================================
+       HERO
+  ============================================ -->
+  <section id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-overlay-side"></div>
+
+    <div class="hero-content">
+      <p class="hero-tag">Fotografia de Casamentos & Eventos</p>
+      <h1 class="hero-title">
+        O momento que
+        <em>não pode ser repetido.</em>
+      </h1>
+      <p class="hero-subtitle">
+        Cada olhar, cada toque, cada lágrima tem um peso único. Meu trabalho é capturar esses instantes com a delicadeza e a beleza que eles merecem.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5545999889353?text=Olá%20Thiago!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20casamento." target="_blank" class="btn-primary">
+          <!-- WhatsApp icon -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Solicitar orçamento
+        </a>
+        <a href="#portfolio" class="btn-secondary">Ver portfólio</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ============================================
+       NÚMEROS
+  ============================================ -->
+  <section id="numbers">
+    <div class="number-item">
+      <div class="number-value" data-count="500">0</div>
+      <div class="number-label">Casamentos realizados</div>
+    </div>
+    <div class="number-item">
+      <div class="number-value" data-count="12">0</div>
+      <div class="number-label">Anos de experiência</div>
+    </div>
+    <div class="number-item">
+      <div class="number-value" data-count="8">0</div>
+      <div class="number-label">Prêmios nacionais</div>
+    </div>
+    <div class="number-item">
+      <div class="number-value">100%</div>
+      <div class="number-label">Satisfação garantida</div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SOBRE
+  ============================================ -->
+  <section id="sobre">
+    <div class="sobre-img-wrap">
+      <!-- 🔄 TROQUE src pela foto profissional do Thiago -->
+      <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=800&q=80" alt="Thiago Bianconi — fotógrafo de casamentos" loading="lazy" />
+      <div class="sobre-img-frame"></div>
+      <div class="sobre-badge">
+        <div class="sobre-badge-num">+12</div>
+        <div class="sobre-badge-text">Anos contando histórias</div>
+      </div>
+    </div>
+
+    <div class="sobre-text">
+      <span class="section-label">Sobre o fotógrafo</span>
+      <h2>Eu acredito que<br><em>amor merece arte.</em></h2>
+      <span class="gold-line"></span>
+      <p>
+        Eternize o seu grande dia. Com fotos clássicas, de alta qualidade e atendimento exclusivo, transformo cada momento em imagens que vão além do tempo — e que você vai querer mostrar para sempre.
+      </p>
+      <p>
+        Meu estilo une fotojornalismo e fotografia artística, capturando a história real do seu dia com elegância e emoção. Acredito que cada detalhe importa e cada olhar conta uma história única.
+      </p>
+      <p>
+        Baseado no Paraná, atendo em todo o Brasil e internacionalmente.
+      </p>
+      <div class="sobre-assinatura">Thiago Bianconi</div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PORTFÓLIO
+  ============================================ -->
+  <section id="portfolio">
+    <div class="portfolio-header">
+      <div>
+        <span class="section-label">Trabalhos recentes</span>
+        <h2>Histórias que<br><em>eu tive o privilégio</em><br>de contar</h2>
+      </div>
+      <div class="portfolio-filter">
+        <button class="filter-btn active">Todos</button>
+        <button class="filter-btn">Cerimônia</button>
+        <button class="filter-btn">Ensaios</button>
+        <button class="filter-btn">Recepção</button>
+      </div>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+      <!--
+        🔄 INSTRUÇÕES PARA TROCAR AS FOTOS:
+        Substitua as URLs das imagens (src="...") pelas suas fotos reais.
+        Recomendado: hospede no Cloudinary ou use URLs do seu próprio servidor.
+        Tamanho sugerido: mínimo 800px na dimensão maior, formato JPG/WebP.
+      -->
+      <div class="portfolio-item" data-category="cerimonia">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=900&q=80" alt="Casamento elegante — cerimônia ao ar livre" loading="lazy" />
+        <div class="portfolio-item-overlay"><span>Cerimônia</span></div>
+      </div>
+      <div class="portfolio-item" data-category="recepcao">
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" alt="Recepção — primeiro baile" loading="lazy" />
+        <div class="portfolio-item-overlay"><span>Recepção</span></div>
+      </div>
+      <div class="portfolio-item" data-category="ensaio">
+        <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=700&q=80" alt="Ensaio pré-wedding" loading="lazy" />
+        <div class="portfolio-item-overlay"><span>Ensaio</span></div>
+      </div>
+      <div class="portfolio-item" data-category="ensaio">
+        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=700&q=80" alt="Noiva — detalhe do vestido" loading="lazy" />
+        <div class="portfolio-item-overlay"><span>Detalhes</span></div>
+      </div>
+      <div class="portfolio-item" data-category="cerimonia">
+        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=800&q=80" alt="Cerimônia — troca de alianças" loading="lazy" />
+        <div class="portfolio-item-overlay"><span>Cerimônia</span></div>
+      </div>
+      <div class="portfolio-item" data-category="recepcao">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900&q=80" alt="Recepção — decoração luxuosa" loading="lazy" />
+        <div class="portfolio-item-overlay"><span>Recepção</span></div>
+      </div>
+      <div class="portfolio-item" data-category="ensaio">
+        <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=700&q=80" alt="Ensaio pós-casamento" loading="lazy" />
+        <div class="portfolio-item-overlay"><span>Ensaio</span></div>
+      </div>
+      <div class="portfolio-item" data-category="cerimonia">
+        <img src="https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=800&q=80" alt="Casamento na praia" loading="lazy" />
+        <div class="portfolio-item-overlay"><span>Cerimônia</span></div>
+      </div>
+      <div class="portfolio-item" data-category="recepcao">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80" alt="Dança dos noivos" loading="lazy" />
+        <div class="portfolio-item-overlay"><span>Recepção</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SERVIÇOS
+  ============================================ -->
+  <section id="servicos">
+    <div class="servicos-header">
+      <span class="section-label">O que ofereço</span>
+      <h2>Uma experiência<br><em>pensada para você</em></h2>
+    </div>
+
+    <div class="servicos-grid">
+      <div class="servico-card">
+        <div class="servico-num">01</div>
+        <div class="servico-icon">💍</div>
+        <h3>Casamento Completo</h3>
+        <p>Cobertura completa do dia — da preparação à festa. Dois fotógrafos, edição profissional e entrega de galeria online de alta resolução.</p>
+        <div class="servico-detalhe">Saber mais</div>
+      </div>
+      <div class="servico-card">
+        <div class="servico-num">02</div>
+        <div class="servico-icon">🌸</div>
+        <h3>Ensaio Pré-Wedding</h3>
+        <p>Uma sessão especial antes do grande dia para os noivos se familiarizarem com a câmera e criarem imagens únicas num lugar significativo.</p>
+        <div class="servico-detalhe">Saber mais</div>
+      </div>
+      <div class="servico-card">
+        <div class="servico-num">03</div>
+        <div class="servico-icon">✈️</div>
+        <h3>Destination Wedding</h3>
+        <p>Casamentos em qualquer lugar do Brasil e do mundo. Levo minha essência para destinos nacionais e internacionais com a mesma dedicação.</p>
+        <div class="servico-detalhe">Saber mais</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       COMO FUNCIONA
+  ============================================ -->
+  <section id="como-funciona">
+    <div class="como-header">
+      <span class="section-label">A experiência</span>
+      <h2>Como tudo<br><em>acontece</em></h2>
+    </div>
+
+    <div class="como-steps">
+      <div class="como-step">
+        <div class="step-circle"><span class="step-num">01</span></div>
+        <h4>Primeiro contato</h4>
+        <p>Me conta sobre o seu casamento pelo WhatsApp. Verificamos a disponibilidade da data e marcamos uma conversa sem compromisso.</p>
+      </div>
+      <div class="como-step">
+        <div class="step-circle"><span class="step-num">02</span></div>
+        <h4>Conhecendo vocês</h4>
+        <p>Uma conversa (presencial ou online) para entender a história de vocês, o estilo do evento e o que esperam das fotos.</p>
+      </div>
+      <div class="como-step">
+        <div class="step-circle"><span class="step-num">03</span></div>
+        <h4>O grande dia</h4>
+        <p>Chego antes da preparação e fico presente até o final da festa, capturando tudo com discrição, cuidado e muita emoção.</p>
+      </div>
+      <div class="como-step">
+        <div class="step-circle"><span class="step-num">04</span></div>
+        <h4>Entrega da galeria</h4>
+        <p>Em até 60 dias, você recebe uma galeria online privada com todas as fotos editadas em alta resolução, para download ilimitado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       DEPOIMENTOS
+  ============================================ -->
+  <section id="depoimentos">
+    <div class="depoimentos-header">
+      <span class="section-label">O que dizem os noivos</span>
+      <h2>Histórias que<br><em>emocionam</em></h2>
+    </div>
+
+    <div class="depoimentos-grid">
+      <div class="depoimento-card">
+        <div class="depoimento-quote">"</div>
+        <div class="depoimento-stars">★★★★★</div>
+        <p class="depoimento-text">O Thiago capturou momentos que nem percebemos que aconteceram. Cada foto é uma obra de arte. Quando abrimos a galeria, choramos de emoção. Valeu muito cada centavo!</p>
+        <div class="depoimento-author">
+          <div class="author-avatar">
+            <!-- 🔄 TROQUE pela foto da cliente -->
+            <img src="https://i.pravatar.cc/150?img=47" alt="Camila" loading="lazy" />
+          </div>
+          <div>
+            <div class="author-name">Camila & Rafael</div>
+            <div class="author-event">Casamento — Campinas, SP · 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depoimento-card">
+        <div class="depoimento-quote">"</div>
+        <div class="depoimento-stars">★★★★★</div>
+        <p class="depoimento-text">Profissional impecável! Muito discreto durante a cerimônia, mas sempre no lugar certo na hora certa. As fotos ficaram absolutamente lindas e atemporais.</p>
+        <div class="depoimento-author">
+          <div class="author-avatar">
+            <img src="https://i.pravatar.cc/150?img=32" alt="Ana Paula" loading="lazy" />
+          </div>
+          <div>
+            <div class="author-name">Ana Paula & Bruno</div>
+            <div class="author-event">Casamento — São Paulo, SP · 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="depoimento-card">
+        <div class="depoimento-quote">"</div>
+        <div class="depoimento-stars">★★★★★</div>
+        <p class="depoimento-text">Desde o primeiro contato até a entrega, o Thiago foi excepcional. Ele nos deixou completamente à vontade e o resultado foi além de tudo que esperávamos. Recomendo demais!</p>
+        <div class="depoimento-author">
+          <div class="author-avatar">
+            <img src="https://i.pravatar.cc/150?img=25" alt="Fernanda" loading="lazy" />
+          </div>
+          <div>
+            <div class="author-name">Fernanda & Marcelo</div>
+            <div class="author-event">Destination Wedding — Gramado, RS · 2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURED
+  ============================================ -->
+  <section id="featured">
+    <div class="featured-bg" id="featuredBg"></div>
+    <div class="featured-content">
+      <p class="featured-quote">
+        Fotografar um casamento é entrar em contato com o amor em sua forma mais pura.
+      </p>
+      <p class="featured-author">— Thiago Bianconi</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA FINAL
+  ============================================ -->
+  <section id="cta">
+    <div class="cta-inner">
+      <span class="section-label">Vamos conversar?</span>
+      <h2>Sua história merece<br><em>ser contada</em><br>com arte.</h2>
+      <p>
+        Verifique a disponibilidade da sua data e receba um orçamento personalizado.<br>
+        Respondo em menos de 24 horas.
+      </p>
+      <a
+        href="https://wa.me/5545999889353?text=Olá%20Thiago!%20Vi%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20casamento.%20Minha%20data%20é:"
+        target="_blank"
+        class="cta-whatsapp"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Solicitar orçamento pelo WhatsApp
+      </a>
+      <p class="cta-note">📍 Paraná · Destination Weddings no Brasil e no mundo</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       RODAPÉ
+  ============================================ -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Thiago <span>Bianconi</span></h3>
+        <p class="tagline">Fotografia de Casamentos & Eventos</p>
+        <p>
+          Eternize o seu grande dia. Fotos clássicas, de alta qualidade e atendimento exclusivo. Baseado no Paraná, atendendo em todo o Brasil e no mundo.
+        </p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/thiagobianconifotografia" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/5545999889353" target="_blank" class="social-btn" aria-label="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#sobre">Sobre o fotógrafo</a></li>
+          <li><a href="#portfolio">Portfólio</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5545999889353" target="_blank">(45) 9 9988-9353</a></li>
+          <!-- 🔄 TROQUE pelo e-mail real -->
+          <li><a href="mailto:contato@thiagobianconifotografia.com.br">contato@thiagobianconifotografia.com.br</a></li>
+          <li><a href="#">Paraná · Brasil e Mundo</a></li>
+          <li><a href="https://www.instagram.com/thiagobianconifotografia" target="_blank">@thiagobianconifotografia</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Thiago Bianconi Fotografia. Todos os direitos reservados.</p>
+      <p>Feito com ♥ para eternizar momentos</p>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       BOTÃO FLUTUANTE WHATSAPP
+  ============================================ -->
+  <a
+    href="https://wa.me/5545999889353?text=Olá%20Thiago!%20Vi%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
+    target="_blank"
+    class="whatsapp-float"
+    aria-label="Fale pelo WhatsApp"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">×</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+  </div>
+
+  <!-- ============================================
+       JAVASCRIPT
+  ============================================ -->
+  <script>
+    // ── Nav scroll effect ──────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Hero parallax & load ───────────────────────────
+    const hero = document.getElementById('hero');
+    hero.classList.add('loaded');
+
+    window.addEventListener('scroll', () => {
+      const heroBg = document.getElementById('heroBg');
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        heroBg.style.transform = `scale(1) translateY(${scrolled * 0.3}px)`;
+      }
+    }, { passive: true });
+
+    // ── Intersection Observer — animações de entrada ───
+    const observerOpts = { threshold: 0.15, rootMargin: '0px 0px -60px 0px' };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => entry.target.classList.add('visible'), delay * 120);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOpts);
+
+    // Animar itens com delay escalonado
+    document.querySelectorAll(
+      '.number-item, .sobre-img-wrap, .sobre-text, .portfolio-item, ' +
+      '.servico-card, .como-step, .depoimento-card'
+    ).forEach((el, i) => {
+      el.dataset.delay = i % 4;
+      observer.observe(el);
+    });
+
+    // ── Contador animado ───────────────────────────────
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target.querySelector('[data-count]');
+          if (!el) return;
+          const target = parseInt(el.getAttribute('data-count'));
+          let current = 0;
+          const step = Math.ceil(target / 60);
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            el.textContent = current + '+';
+            if (current >= target) clearInterval(timer);
+          }, 20);
+          counterObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.number-item').forEach(el => counterObs.observe(el));
+
+    // ── Filtro de portfólio ────────────────────────────
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.textContent.toLowerCase().trim();
+        portfolioItems.forEach(item => {
+          const cat = item.dataset.category || '';
+          const show = filter === 'todos' || cat === filter;
+          item.style.opacity = show ? '1' : '0.2';
+          item.style.transform = show ? 'scale(1)' : 'scale(0.95)';
+        });
+      });
+    });
+
+    // ── Lightbox ───────────────────────────────────────
+    const lightbox     = document.getElementById('lightbox');
+    const lightboxImg  = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    portfolioItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const src = item.querySelector('img').src;
+        const alt = item.querySelector('img').alt;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Mobile menu ────────────────────────────────────
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    mobileClose.addEventListener('click', closeMobileMenu);
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Featured parallax sutil ────────────────────────
+    const featuredSection = document.getElementById('featured');
+    const featuredBg = document.getElementById('featuredBg');
+
+    window.addEventListener('scroll', () => {
+      const rect = featuredSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+        featuredBg.style.transform = `scale(1.02) translateY(${(progress - 0.5) * 60}px)`;
+      }
+    }, { passive: true });
+
+    // ── Smooth reveal do cursor ────────────────────────
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.style.cursor = 'zoom-in';
+    });
+  </script>
+</body>
+</html>
